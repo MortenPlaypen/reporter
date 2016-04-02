@@ -50,6 +50,8 @@ gem 'bootstrap-sass-extras'
 gem 'binding_of_caller'
 gem 'google-analytics-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'httparty' #added after prelang
+gem 'zendesk_api'
 
 group :development do
   gem 'better_errors'
@@ -57,4 +59,5 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pry' #added after prelang
 end
