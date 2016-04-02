@@ -52,6 +52,7 @@ gem 'google-analytics-rails'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'httparty' #added after prelang
 gem 'zendesk_api'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors'
