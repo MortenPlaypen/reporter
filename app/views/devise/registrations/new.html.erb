@@ -29,6 +29,20 @@
   </div>
      
   <div class="form-group">
+    <%= f.label :zendesk_email, "Zendesk Email", class: "control-label col-md-4" %>
+    <div class="col-md-8">
+      <%= f.zendesk_email_field :zendesk_email, class: "text-field form-control", html: {autocomplete: "off"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :zendesk_password, "Zendesk Password", class: "control-label col-md-4" %>
+    <div class="col-md-8">
+      <%= f.zendesk_password_field :zendesk_password, class: "text-field form-control", html: {autocomplete: "off"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
     <div class="col-md-offset-4 col-md-8">
       <%= f.submit "Sign Up", class: "btn btn-primary" %>
     </div>
