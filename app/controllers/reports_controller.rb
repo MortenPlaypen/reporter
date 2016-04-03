@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
 	before_filter :authenticate_user!, :create_zendesk_client
+	include GetMetrics
 
 	def index
 		@content = GetMetrics.get_metrics(current_user)
