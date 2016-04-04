@@ -7,45 +7,52 @@
 				<div class="page-header">
 					<h1><%=t ".title", default: "Create Report" %></h1>
 				</div>
-		     	Content is: <%= @content[:last_week] %>
-				Client is: <%= @zendesk_client.search(query: "type:ticket ") %>
+		     	<div>Client is: <%= @zendesk_client %></div>
+				<div>Volume is: <%= @volume %></div>
+				<div>Info_hash is: <%= @info_hash %></div>
 		    </div>
 		</div>
 
 		<div class="row">
 		    <%= form_for @report, html: {class: "form-horizontal form-user"} do |f| %>
 		    
-
-		      <div class="form-group">
-		          <%= f.label :tag, "Which tag do you want to update your team on?", class: "control-label col-md-4" %>
-		          <div class="col-md-4">
-		            <%= f.select :tag, current_user.get_tags %>
-		          </div>
-		      </div>
-		      <div class="form-group">
-		          <%= f.label :mailbox_hsid, "From which mailbox?", class:  "control-label col-md-4" %>
-		          <div class="col-md-4">
-		            <%= f.select :mailbox_hsid, current_user.get_mailboxes %>
-		          </div>
-		      </div>
-		      <div class="form-group">
-		          <%= f.label :recipient_email, "Who should receive the report?", class: "control-label col-md-4" %>
-		          <div class="col-md-4">
-		            <%= f.text_field(:recipient_email) %>
-		          </div>
-		      </div>
-		      <div>
-		        <div class="col-md-4">
-		          <p>Active reports are compiled and emailed at midnight on Sunday covering the previous seven days.</p>
-		        </div>
-		      </div>
-		      <div class="form-group">
-		        <div class="col-md-4">
-		        </div>
-		        <div class="col-md-4">
-		          <%= f.submit "Save", class: "btn btn-primary" %>
-		        </div>
-		      </div>
+				<div class="form-group">
+					<%= f.label :volume, "Volume", class:  "control-label col-md-6" %>
+					<div class="col-md-6">
+						<%= f.check_box :volume %>
+				  	</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :satisfaction, "Satisfaction", class:  "control-label col-md-6" %>
+					<div class="col-md-6">
+						<%= f.check_box :satisfaction %>
+					</div>
+				</div>
+				<div class="form-group">
+				    <%= f.label :first_response_time, "First Response Time", class:  "control-label col-md-6" %>
+				    <div class="col-md-6">
+				      <%= f.check_box :first_response_time %>
+				    </div>
+				</div>
+				<div class="form-group">
+					<%= f.label :resolution_time, "Resolution Time", class:  "control-label col-md-6" %>
+					<div class="col-md-6">
+			    		<%= f.check_box :resolution_time %>
+					</div>
+				</div>
+				<div class="form-group">
+					<%= f.label :top_tags, "Top Tags", class:  "control-label col-md-6" %>
+					<div class="col-md-6">
+						<%= f.check_box :top_tags %>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+					  <%= f.submit "Save", class: "btn btn-primary" %>
+					</div>
+				</div>
 		    <% end %>
 		</div>
 	<% end %>

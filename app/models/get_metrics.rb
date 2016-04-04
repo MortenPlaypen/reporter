@@ -20,17 +20,17 @@ module GetMetrics
 	class ZendeskClient < ZendeskAPI::Client
 
 		def self.instance
-			@instance = ZendeskAPI::Client.new do |config|
+			ZendeskAPI::Client.new do |config|
 			  # Mandatory:
 
-			  config.url = "https://playpenlabs.zendesk.com" # e.g. https://mydesk.zendesk.com/api/v2
+			  config.url = "https://soldsie.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
 
 			  # Basic / Token Authentication
-			  config.username = "morten@playpenlabs.com"
+			  config.username = "team@soldsie.com"
 
 			  # Choose one of the following depending on your authentication choice
 			  #config.token = "your zendesk token"
-			  config.password = "playpenlabs"
+			  config.password = "Zbryant12"
 
 			  # OAuth Authentication
 			  #config.access_token = "your OAuth access token"
