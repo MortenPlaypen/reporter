@@ -21,11 +21,11 @@ class ReportsController < ApplicationController
 
 	def get_volume
 		result = @zendesk_client.tickets.recent #search(query: "type:ticket")
-    	binding.pry
+    	#binding.pry
     	tickets = []
     	@info_hash = {}
     	result.each do |ticket|
-      		binding.pry
+      		#binding.pry
       		ticket = {
         		subject: ticket[:subject],
         		description: ticket[:description]
