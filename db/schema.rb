@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402201305) do
+ActiveRecord::Schema.define(version: 20160404004350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(version: 20160402201305) do
     t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "volume"
+    t.boolean  "satisfaction"
+    t.boolean  "first_response_time"
+    t.boolean  "resolution_time"
+    t.boolean  "top_tags"
   end
 
   create_table "users", force: true do |t|

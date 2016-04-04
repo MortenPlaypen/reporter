@@ -4,6 +4,7 @@ class ReportsController < ApplicationController
 
 	def index
 		@content = GetMetrics.get_metrics(current_user)
+		@report=Report.new
 		#@content = "HER!"
 		#binding.pry
 	end

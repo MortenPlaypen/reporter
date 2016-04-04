@@ -12,7 +12,6 @@ module GetMetrics
 		ret_hash = {}
 		last_week = 42
 		ret_hash = { :last_week => last_week }
-		/binding.pry/
 		return ret_hash
 	end
 
@@ -24,7 +23,7 @@ module GetMetrics
 			@instance = ZendeskAPI::Client.new do |config|
 			  # Mandatory:
 
-			  config.url = "playpenlabs.zendesk.com" # e.g. https://mydesk.zendesk.com/api/v2
+			  config.url = "https://playpenlabs.zendesk.com" # e.g. https://mydesk.zendesk.com/api/v2
 
 			  # Basic / Token Authentication
 			  config.username = "morten@playpenlabs.com"
@@ -46,7 +45,6 @@ module GetMetrics
 			  # Logger prints to STDERR by default, to e.g. print to stdout:
 			  require 'logger'
 			  config.logger = Logger.new(STDOUT)
-			  binding.pry
 			  
 			  # Changes Faraday adapter
 			  # config.adapter = :patron
