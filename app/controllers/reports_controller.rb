@@ -1,10 +1,13 @@
 class ReportsController < ApplicationController
-	before_filter :authenticate_user!, :create_zendesk_client, :get_volume
+	before_filter :authenticate_user!, :create_zendesk_client
 	include GetMetrics
 
 	def index
 		@content = GetMetrics.get_metrics(current_user)
 		@report=Report.new
+		@reports = current_user.reports
+		self.get_metrics
+		#binding.pry
 		#@content = "HER!"
 		#binding.pry
 	end
@@ -16,26 +19,28 @@ class ReportsController < ApplicationController
 
 	def create_zendesk_client
 		# call to get_metrics to create and return instance
-	  @zendesk_client ||= ZendeskClient.instance
+		@zendesk_client ||= ZendeskClient.instance
 	end
 
-	def get_volume
-		result = @zendesk_client.tickets.recent #search(query: "type:ticket")
-    	#binding.pry
-    	tickets = []
-    	@info_hash = {}
-    	result.each do |ticket|
-      		#binding.pry
-      		ticket = {
-        		subject: ticket[:subject],
-        		description: ticket[:description]
-     		}
-     		tickets << ticket
-     		#binding.pry
-	    	end
-	    @info_hash[:tickets] = tickets
-	    #render json: @info_hash
-	    #@info_hash = "TEST"
+	def get_metrics
+		if @reports.first.volume == true
+			# get volume
+			tickets = @zendesk_client.search(query: "type:ticket created>#{Date.today - 30.to_i}")
+			@volume = tickets.count
+		end
+		if @reports.first.satisfaction == true
+			# get satisfaction
+			ratings = @zendesk_client.satisfaction_ratings(query: "created_at>#{Date.today - 30.to_i}")
+		end
+		if @reports.first.first_response_time == true
+			# get response time
+		end
+		if @reports.first.resolution_time == true
+			# get resolution time
+		end
+		if @reports.first.top_tags == true
+			# get top tags
+		end
 
 	end
 

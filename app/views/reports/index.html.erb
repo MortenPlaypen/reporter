@@ -62,9 +62,34 @@
 	<% unless @reports.blank? %>
 		<div class="row">
 		    <div class="col-md-12">
-		      <div class="page-header">
-		        <h1><%=t ".title", default: "Report" %></h1>
-		      </div>
+		      	<div class="page-header">
+		    		<h1><%=t ".title", default: "Report" %></h1>
+		      	</div>
+		      	<div>
+		      		<% if @reports.first.volume == true %>
+		      		Volume = <%= @volume %>
+		      		<% end %>
+		      	</div>
+		      	<div>
+		      		<% if @reports.first.satisfaction == true %>
+		      		Satisfaction = not so mucho
+		      		<% end %>
+		      	</div>
+		      	<div>
+		      		<% if @reports.first.first_response_time == true %>
+		      		First Response Time = looooong
+		      		<% end %>
+		      	</div>
+		      	<div>
+		      		<% if @reports.first.resolution_time == true %>
+		      		Resolution Time = not too long
+		      		<% end %>
+		      	</div>
+		      	<div>
+		      		<% if @reports.first.top_tags == true %>
+		      		Top Tags = all the tags
+		      		<% end %>
+		      	</div	
 		    </div>
 		</div>
 	<% end %>
