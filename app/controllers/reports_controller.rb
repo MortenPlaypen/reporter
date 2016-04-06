@@ -7,9 +7,6 @@ class ReportsController < ApplicationController
 		@report=Report.new
 		@reports = current_user.reports
 		self.get_metrics
-		#binding.pry
-		#@content = "HER!"
-		#binding.pry
 	end
 
 	def create
@@ -30,7 +27,8 @@ class ReportsController < ApplicationController
 		end
 		if @reports.first.satisfaction == true
 			# get satisfaction
-			ratings = @zendesk_client.satisfaction_ratings(query: "created_at>#{Date.today - 30.to_i}")
+			tickets = @zendesk_client.search(query: "type:ticket closed>#{Date.today - 30.to_i}")
+			ratings = tickets.count
 		end
 		if @reports.first.first_response_time == true
 			# get response time
