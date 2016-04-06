@@ -27,8 +27,10 @@ class ReportsController < ApplicationController
 		end
 		if @reports.first.satisfaction == true
 			# get satisfaction
-			tickets = @zendesk_client.search(query: "type:ticket closed>#{Date.today - 30.to_i}")
-			ratings = tickets.count
+			# result = @zendesk_client.search(query: "type:satisfaction_rating closed>#{Date.today - 30.to_i}")
+			result = @zendesk_client.satisfaction_ratings #(query: "type:satisfaction_rating closed>#{Date.today - 30.to_i}")
+			# loop through tickets that have satisfaction to find satisified percentage
+			
 		end
 		if @reports.first.first_response_time == true
 			# get response time
