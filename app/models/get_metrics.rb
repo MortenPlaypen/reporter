@@ -44,7 +44,7 @@ module GetMetrics
 
 			  # Logger prints to STDERR by default, to e.g. print to stdout:
 			  require 'logger'
-			  config.logger = Logger.new(STDOUT)
+			  # config.logger = Logger.new(STDOUT)
 			  
 			  # Changes Faraday adapter
 			  # config.adapter = :patron

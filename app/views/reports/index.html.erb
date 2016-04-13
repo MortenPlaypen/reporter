@@ -72,12 +72,12 @@
 		      	</div>
 		      	<div>
 		      		<% if @reports.first.satisfaction == true %>
-		      		Satisfaction = not so mucho
+		      		Satisfaction = <%= @satisfaction %>
 		      		<% end %>
 		      	</div>
 		      	<div>
 		      		<% if @reports.first.first_response_time == true %>
-		      		First Response Time = looooong
+		      		First Response Time = <%= @reply_time %>
 		      		<% end %>
 		      	</div>
 		      	<div>
